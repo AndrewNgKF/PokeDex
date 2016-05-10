@@ -11,6 +11,7 @@ import Foundation
 let URL_BASE = "http://pokeapi.co"
 let URL_POKEMON = "/api/v1/pokemon/"
 
-typealias DownloadComplete = () -> () 
+typealias DownloadComplete = () -> ()
+//cause the data gets downloaded FIRST, otherwise if VC gets it before its done downloading, the app would crash
 
 

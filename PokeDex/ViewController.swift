@@ -18,6 +18,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var musicPlayer: AVAudioPlayer!
     var inSearchMode = false
     var filteredPokemon = [Pokemon]()
+    
+    
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +42,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             musicPlayer = try AVAudioPlayer(contentsOfURL: NSURL(string: path!)!)
             musicPlayer.prepareToPlay()
             musicPlayer.numberOfLoops = 0
+            musicPlayer.volume = 0.1
             musicPlayer.play()
         } catch let err as NSError {
             print(err.debugDescription)
@@ -98,7 +102,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         } else {
             poke = pokemon[indexPath.row]
         }
-        print(poke.name)
         performSegueWithIdentifier("PokemonDetailVC", sender: poke)
     }
     
@@ -139,7 +142,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
         if searchBar.text == nil || searchBar.text == "" {
+            
             inSearchMode = false
             view.endEditing(true)
             collection.reloadData()
@@ -162,6 +167,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    
+ 
     
     
 }
